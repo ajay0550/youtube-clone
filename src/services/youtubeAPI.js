@@ -1,11 +1,15 @@
-const API_KEY = import.meta.env.VITE_RAPID_API;
+const API_KEY = import.meta.env.VITE_NEW_KEY;
 const BASE_URL = "https://www.googleapis.com/youtube/v3";
 
 export const fetchVideos = async (query = "games") => {
+  console.log("ENV KEY:", API_KEY);
+
   try {
     const response = await fetch(
       `${BASE_URL}/search?part=snippet&q=${query}&type=video&maxResults=20&key=${API_KEY}`
     );
+
+    console.log("STATUS:", response.status);
 
     const data = await response.json();
     console.log("YOUTUBE DATA:", data);
